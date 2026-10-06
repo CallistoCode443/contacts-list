@@ -18,10 +18,10 @@ fun Context.fetchAllContacts(): List<Contact> {
             val builder = ArrayList<Contact>()
             while (cursor.moveToNext()) {
                 val name =
-                    cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME))
+                    cursor.getString(cursor.getColumnIndexOrThrow(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME))
                         ?: "N/A"
                 val phoneNumber =
-                    cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER))
+                    cursor.getString(cursor.getColumnIndexOrThrow(ContactsContract.CommonDataKinds.Phone.NUMBER))
                         ?: "N/A"
 
                 builder.add(Contact(name, phoneNumber))
