@@ -94,8 +94,8 @@ fun App(modifier: Modifier = Modifier) {
                 .height(56.dp)
                 .background(Color(0xFF277477))
         )
-        if (hasPermission) {
-            LazyColumn(modifier = modifier) {
+        if (hasPermission && contacts.isNotEmpty()) {
+            LazyColumn(modifier = Modifier.fillMaxSize()) {
                 items(contacts) { contact ->
                     ContactItem(contact)
                 }
@@ -107,8 +107,7 @@ fun App(modifier: Modifier = Modifier) {
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.Center
             ) {
-                Text(text = "Нет разрешения на чтение контактов")
-                Text(text = "Разрешите доступ в настройках приложения")
+                Text(text = "No contacts found")
             }
         }
     }
